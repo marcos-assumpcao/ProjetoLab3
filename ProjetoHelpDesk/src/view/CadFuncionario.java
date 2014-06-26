@@ -6,6 +6,9 @@
 
 package view;
 
+import javax.swing.JOptionPane;
+import model.ComandosSql;
+
 /**
  *
  * @author Vinicius
@@ -38,8 +41,6 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         jTextFieldCidade = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextFieldCelular = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
         jButtonAdicionar = new javax.swing.JButton();
@@ -49,6 +50,8 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         jTextFieldSetor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldRamal = new javax.swing.JTextField();
+        jTextFieldTelefone = new javax.swing.JTextField();
+        jTextFieldCelular = new javax.swing.JTextField();
 
         setClosable(true);
         setForeground(java.awt.Color.red);
@@ -74,21 +77,14 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Celular:");
 
-        try {
-            jFormattedTextFieldCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         jLabel8.setText("E-mail:");
 
         jButtonAdicionar.setText("Adicionar");
+        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,9 +137,9 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                             .addComponent(jTextFieldEndereco)
                             .addComponent(jTextFieldEmail)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jFormattedTextFieldCelular, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldTelefone)
+                                    .addComponent(jTextFieldCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -178,11 +174,11 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jFormattedTextFieldCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
@@ -200,7 +196,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonAdicionar)
                     .addComponent(jButtonLimpar))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -221,19 +217,39 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         jTextFieldEndereco.setText(null);
         jTextFieldBairro.setText(null);
         jTextFieldCidade.setText(null);
-        jFormattedTextFieldTelefone.setText(null);
+        jTextFieldTelefone.setText(null);
         jTextFieldRamal.setText(null);
-        jFormattedTextFieldCelular.setText(null);
+        jTextFieldCelular.setText(null);
         jTextFieldEmail.setText(null);
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+        // TODO add your handling code here:
+        ComandosSql c = new ComandosSql();
+        
+        String sql = "Insert into funcionario (nome,endereco,bairro,cidade,telefone,ramal,celular,setor,email) values ('";
+        sql = sql + jTextFieldNome.getText() + "','"
+                + jTextFieldEndereco.getText() + "','"
+                + jTextFieldBairro.getText() + "','"
+                + jTextFieldCidade.getText() + "','"
+                + jTextFieldTelefone.getText() + "','"
+                + jTextFieldRamal.getText() + "','"
+                + jTextFieldCelular.getText() + "','"
+                + jTextFieldSetor.getText() + "','"
+                + jTextFieldEmail.getText() + "')";
+
+        try {
+            c.ExecSQL(sql);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inclusão" + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonLimpar;
-    private javax.swing.JFormattedTextField jFormattedTextFieldCelular;
-    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -244,16 +260,14 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextFieldBairro;
+    private javax.swing.JTextField jTextFieldCelular;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldRamal;
     private javax.swing.JTextField jTextFieldSetor;
+    private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
-
-    private void setText(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

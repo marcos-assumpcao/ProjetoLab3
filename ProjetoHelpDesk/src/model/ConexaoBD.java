@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
  * @author lasaccomori
  */
 public class ConexaoBD {
-
     Connection conn;
 
     public void conectar() {
@@ -26,7 +25,8 @@ public class ConexaoBD {
         }
 
         String serverName = "localhost";
-        String database = "bdhelpdesk";
+        //String database = "bdhelpdesk";
+        String database = "helpdesk";
         String url = "jdbc:mysql://" + serverName + "/" + database;
         String user = "root";
         String password = "";
@@ -37,6 +37,5 @@ public class ConexaoBD {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERRO NA CONEXÃO COM BD");
         }
-
     }
 }

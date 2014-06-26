@@ -8,6 +8,7 @@ package view;
 
 import model.ComandosSql;
 import javax.swing.JOptionPane;
+import model.Cliente;
 
 /**
  *
@@ -229,23 +230,41 @@ public class CadCliente extends javax.swing.JInternalFrame {
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         // TODO add your handling code here:
-        ComandosSql c = new ComandosSql();  
+        ComandosSql c = new ComandosSql();
+        Cliente cli = new Cliente();
         
+            String sql1 = "Insert into usuario (nome,endereco,bairro,cidade) values ('";
+            sql1 = sql1 + jTextFieldNome.getText() + "','"
+                    + jTextFieldEndereco.getText() + "','"
+                    + jTextFieldBairro.getText() + "','"
+                    + jTextFieldCidade.getText() + "')";
+     
         
-        String sql ="Insert into cliente (nome,endereco,bairro,cidade,telefone,ramal,celular,setor,email) values ('";
-                       sql = sql + jTextFieldNome.getText()+"','"+ 
-                       jTextFieldEndereco.getText()+"','"+ 
-                       jTextFieldBairro.getText()+"','"+ 
-                       jTextFieldCidade.getText()+ "','"+ 
-                       jTextFieldTelefone.getText()+ "','"+ 
-                       jTextFieldRamal.getText()+"','"+ 
-                       jTextFieldCelular.getText()+"','"+ 
-                       jTextFieldSetor.getText()+"','"+ 
-                       jTextFieldEmail.getText()+"')"; 
-        try{
-               c.ExecSQL(sql);
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Inclusão" + e.getMessage());
+     
+            String sql2 = "Insert into cliente (telefone,ramal,celular,setor,email) values ('";
+            sql2 = sql2 + jTextFieldTelefone.getText() + "','"
+                    + jTextFieldRamal.getText() + "','"
+                    + jTextFieldCelular.getText() + "','"
+                    + jTextFieldSetor.getText() + "','"
+                    + jTextFieldEmail.getText() + "')";
+        
+        /*
+        String sql = "Insert into cliente (nome,endereco,bairro,cidade,telefone,ramal,celular,setor,email) values ('";
+        sql = sql + jTextFieldNome.getText() + "','"
+                + jTextFieldEndereco.getText() + "','"
+                + jTextFieldBairro.getText() + "','"
+                + jTextFieldCidade.getText() + "','"
+                + jTextFieldTelefone.getText() + "','"
+                + jTextFieldRamal.getText() + "','"
+                + jTextFieldCelular.getText() + "','"
+                + jTextFieldSetor.getText() + "','"
+                + jTextFieldEmail.getText() + "')";
+        */
+        try {
+            c.ExecSQL(sql1);
+            //c.ExecSQL(sql2);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inclusão" + e.getMessage());
         }
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
@@ -277,4 +296,5 @@ public class CadCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldSetor;
     private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
+
 }
