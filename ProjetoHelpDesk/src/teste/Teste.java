@@ -10,7 +10,7 @@ import model.ComandosSql;
 
 /**
  *
- * @author Vinicius
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class Teste {
     
@@ -18,6 +18,10 @@ public class Teste {
         
         ComandosSql c = new ComandosSql();
         
+        
+        String consulta = "Select max(idUsuario) from usuario";
+        
+        System.out.println(consulta);
         
         
        /* DatasController dc = new DatasController();

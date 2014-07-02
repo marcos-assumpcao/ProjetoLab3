@@ -8,9 +8,7 @@ package model;
 
 /**
  *
- * @author Marcos Assumpcao, Ubirajara, Vinicius
- * 
- * 
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza 
  */
 public class Cliente extends Usuario{
     private int idCliente;

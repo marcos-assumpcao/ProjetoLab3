@@ -8,7 +8,7 @@ package model;
 
 /**
  *
- * @author Vinicius
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class Periferico {
     private String nome;

@@ -8,7 +8,7 @@ package view;
 
 /**
  *
- * @author Vinicius
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class CadChamado extends javax.swing.JInternalFrame {
 

@@ -8,12 +8,10 @@ package model;
 
 /**
  *
- * @author Vinicius
- * 
- * 
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class Usuario {
-    protected int idUsuario;
+    public int idUsuario;
     protected String nome;
     protected String endereco;
     protected String bairro;

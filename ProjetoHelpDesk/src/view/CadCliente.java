@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view;
+
+import java.util.ArrayList;
 
 import model.ComandosSql;
 import javax.swing.JOptionPane;
@@ -12,9 +13,11 @@ import model.Cliente;
 
 /**
  *
- * @author Vinicius
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class CadCliente extends javax.swing.JInternalFrame {
+
+    ComandosSql c = new ComandosSql();
 
     /**
      * Creates new form CadCliente
@@ -53,6 +56,11 @@ public class CadCliente extends javax.swing.JInternalFrame {
         jTextFieldSetor = new javax.swing.JTextField();
         jTextFieldTelefone = new javax.swing.JTextField();
         jTextFieldCelular = new javax.swing.JTextField();
+        jButtonAlterar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jTextFieldIdCliente = new javax.swing.JTextField();
 
         setClosable(true);
         setForeground(java.awt.Color.red);
@@ -111,21 +119,44 @@ public class CadCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonAlterar.setText("Alterar");
+        jButtonAlterar.setActionCommand("");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Código:");
+
+        jTextFieldIdCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIdClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonAdicionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCancelar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,16 +168,16 @@ public class CadCliente extends javax.swing.JInternalFrame {
                                 .addGap(0, 11, Short.MAX_VALUE))
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldEndereco)
-                            .addComponent(jTextFieldEmail)
-                            .addGroup(layout.createSequentialGroup()
+                            .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextFieldTelefone)
                                     .addComponent(jTextFieldCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
@@ -159,7 +190,23 @@ public class CadCliente extends javax.swing.JInternalFrame {
                                     .addComponent(jTextFieldRamal, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                                     .addComponent(jTextFieldSetor))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextFieldNome))))
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(38, 38, 38)
+                        .addComponent(jTextFieldIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                            .addComponent(jButtonAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonCancelar)))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -199,8 +246,15 @@ public class CadCliente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonAdicionar)
-                    .addComponent(jButtonLimpar))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(jButtonLimpar)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextFieldIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonAlterar))
+                .addContainerGap())
         );
 
         pack();
@@ -230,25 +284,39 @@ public class CadCliente extends javax.swing.JInternalFrame {
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         // TODO add your handling code here:
-        ComandosSql c = new ComandosSql();
-        Cliente cli = new Cliente();
+        /*String sql = "Insert into usuario (nome,endereco,bairro,cidade) values ('";
+         sql = sql
+         + jTextFieldNome.getText() + "','"
+         + jTextFieldEndereco.getText() + "','"
+         + jTextFieldBairro.getText() + "','"
+         + jTextFieldCidade.getText() + "')";*/
+        //----------------------------------------------------------------------
+        //ComandosSql c = new ComandosSql();
+        ArrayList<Cliente> list = new ArrayList<Cliente>();
+        Cliente cliente = new Cliente();
+        /*Usuario usuario = new Usuario();
+
+         String codigo = "select idUsuario from usuario order by idUsuario desc limit 1";
         
-            String sql1 = "Insert into usuario (nome,endereco,bairro,cidade) values ('";
-            sql1 = sql1 + jTextFieldNome.getText() + "','"
-                    + jTextFieldEndereco.getText() + "','"
-                    + jTextFieldBairro.getText() + "','"
-                    + jTextFieldCidade.getText() + "')";
-     
+         try{
+         list = c.ExecQuery(codigo);
+         
+         }catch (Exception e){
+         JOptionPane.showMessageDialog(null,"Consulta" + e.getMessage());
+         }
+       
+         for (int i=0 ; i< list.size();i++){
+         jComboBox1.addItem(list.get(i).getIdUsuario()); 
+         }
         
-     
-            String sql2 = "Insert into cliente (telefone,ramal,celular,setor,email) values ('";
-            sql2 = sql2 + jTextFieldTelefone.getText() + "','"
-                    + jTextFieldRamal.getText() + "','"
-                    + jTextFieldCelular.getText() + "','"
-                    + jTextFieldSetor.getText() + "','"
-                    + jTextFieldEmail.getText() + "')";
-        
-        /*
+         /*String sql2 = "Insert into cliente (idUsuario, telefone,ramal,celular,setor,email) values (";
+         sql2 = sql2 + codigo + ",'"
+         + jTextFieldTelefone.getText() + "','"
+         + jTextFieldRamal.getText() + "','"
+         + jTextFieldCelular.getText() + "','"
+         + jTextFieldSetor.getText() + "','"
+         + jTextFieldEmail.getText() + "')";*/
+
         String sql = "Insert into cliente (nome,endereco,bairro,cidade,telefone,ramal,celular,setor,email) values ('";
         sql = sql + jTextFieldNome.getText() + "','"
                 + jTextFieldEndereco.getText() + "','"
@@ -259,9 +327,9 @@ public class CadCliente extends javax.swing.JInternalFrame {
                 + jTextFieldCelular.getText() + "','"
                 + jTextFieldSetor.getText() + "','"
                 + jTextFieldEmail.getText() + "')";
-        */
+
         try {
-            c.ExecSQL(sql1);
+            c.ExecSQL(sql);
             //c.ExecSQL(sql2);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Inclusão" + e.getMessage());
@@ -272,12 +340,75 @@ public class CadCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCelularActionPerformed
 
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        // TODO add your handling code here:
+        String sql = "Update cliente set nome ='" + jTextFieldNome.getText() + "'";
+        sql = sql + ",endereco ='" + jTextFieldEndereco.getText() + "'";
+        sql = sql + ",bairro ='" + jTextFieldBairro.getText() + "'";
+        sql = sql + ",cidade ='" + jTextFieldCidade.getText() + "'";
+        sql = sql + ",telefone ='" + jTextFieldTelefone.getText() + "'";
+        sql = sql + ",ramal ='" + jTextFieldRamal.getText() + "'";
+        sql = sql + ",celular ='" + jTextFieldCelular.getText() + "'";
+        sql = sql + ",setor ='" + jTextFieldSetor.getText() + "'";
+        sql = sql + ",email ='" + jTextFieldEmail.getText() + "'";
+        sql = sql + " Where idCliente = " + jTextFieldIdCliente.getText();
+        try {
+            c.ExecSQL(sql);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Alteração" + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // TODO add your handling code here:
+        String sql = "Delete from cliente ";
+        sql = sql + " Where idCliente = " + jTextFieldIdCliente.getText();
+        try {
+            c.ExecSQL(sql);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Exclusão" + e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Cliente> list = new ArrayList<Cliente>();
+
+        String sql = "Select * from cliente";
+        sql = sql + " Where idCliente = " + jTextFieldIdCliente.getText();
+        try {
+            list = c.ExecQuery(sql);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Alteração" + e.getMessage());
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            jTextFieldNome.setText(list.get(i).getNome());
+            jTextFieldEndereco.setText(list.get(i).getEndereco());
+            jTextFieldBairro.setText(list.get(i).getBairro());
+            jTextFieldCidade.setText(list.get(i).getCidade());
+            jTextFieldTelefone.setText(Integer.toString(list.get(i).getTelefone()));
+            jTextFieldRamal.setText(Integer.toString(list.get(i).getRamal()));
+            jTextFieldCelular.setText(Integer.toString(list.get(i).getCelular()));
+            jTextFieldSetor.setText(list.get(i).getSetor());
+            jTextFieldEmail.setText(list.get(i).getEmail());
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jTextFieldIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdClienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionar;
+    private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -291,6 +422,7 @@ public class CadCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldEndereco;
+    private javax.swing.JTextField jTextFieldIdCliente;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldRamal;
     private javax.swing.JTextField jTextFieldSetor;

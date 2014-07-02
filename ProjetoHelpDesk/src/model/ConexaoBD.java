@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author lasaccomori
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class ConexaoBD {
     Connection conn;
@@ -25,8 +25,8 @@ public class ConexaoBD {
         }
 
         String serverName = "localhost";
-        //String database = "bdhelpdesk";
-        String database = "helpdesk";
+        String database = "bdhelpdesk";
+        //String database = "helpdesk";
         String url = "jdbc:mysql://" + serverName + "/" + database;
         String user = "root";
         String password = "";

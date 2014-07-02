@@ -11,7 +11,7 @@ import static sun.security.jgss.GSSUtil.login;
 
 /**
  *
- * @author Vinicius
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class Login extends javax.swing.JFrame {
 

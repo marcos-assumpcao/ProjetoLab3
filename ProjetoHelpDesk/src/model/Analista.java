@@ -8,7 +8,7 @@ package model;
 
 /**
  *
- * @author Vinicius
+ * @author @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class Analista extends Usuario {
     

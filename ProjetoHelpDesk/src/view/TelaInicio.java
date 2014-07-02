@@ -8,7 +8,7 @@ package view;
 
 /**
  *
- * @author Vinicius
+ * @author Marcos Assumpcao, Ubirajara Oliveira, Vinicius Souza
  */
 public class TelaInicio extends javax.swing.JFrame {
 
@@ -40,10 +40,10 @@ public class TelaInicio extends javax.swing.JFrame {
         javax.swing.JMenuItem jMenuItemCadGerente = new javax.swing.JMenuItem();
         jMenuItemCadChamado = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItemConsultaFuncionario = new javax.swing.JMenuItem();
+        jMenuItemConsultaCliente = new javax.swing.JMenuItem();
+        jMenuItemConsultaGerente = new javax.swing.JMenuItem();
+        jMenuItemConsultaChamado = new javax.swing.JMenuItem();
 
         jMenu7.setText("jMenu7");
 
@@ -106,22 +106,32 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Vinicius\\Desktop\\25_folder.png")); // NOI18N
         jMenu1.setText("Consulta");
 
-        jMenuItem5.setText("Funcionario");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemConsultaFuncionario.setText("Funcionario");
+        jMenuItemConsultaFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuItemConsultaFuncionarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        jMenu1.add(jMenuItemConsultaFuncionario);
 
-        jMenuItem6.setText("Cliente");
-        jMenu1.add(jMenuItem6);
+        jMenuItemConsultaCliente.setText("Cliente");
+        jMenuItemConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConsultaClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemConsultaCliente);
 
-        jMenuItem9.setText("Gerente");
-        jMenu1.add(jMenuItem9);
+        jMenuItemConsultaGerente.setText("Gerente");
+        jMenuItemConsultaGerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConsultaGerenteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemConsultaGerente);
 
-        jMenuItem10.setText("Chamado");
-        jMenu1.add(jMenuItem10);
+        jMenuItemConsultaChamado.setText("Chamado");
+        jMenu1.add(jMenuItemConsultaChamado);
 
         jMenuBar2.add(jMenu1);
 
@@ -157,9 +167,12 @@ public class TelaInicio extends javax.swing.JFrame {
         jDesktop.add(cadGerente);
     }//GEN-LAST:event_jMenuItemCadGerenteActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void jMenuItemConsultaFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaFuncionarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        ConsultaFuncionario ConsultaFuncionario = new ConsultaFuncionario();
+        ConsultaFuncionario.setVisible(true);
+        jDesktop.add(ConsultaFuncionario);
+    }//GEN-LAST:event_jMenuItemConsultaFuncionarioActionPerformed
 
     private void jMenuItemCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadClienteActionPerformed
         // TODO add your handling code here:
@@ -174,6 +187,20 @@ public class TelaInicio extends javax.swing.JFrame {
         cadChamado.setVisible(true);
         jDesktop.add(cadChamado);
     }//GEN-LAST:event_jMenuItemCadChamadoActionPerformed
+
+    private void jMenuItemConsultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaClienteActionPerformed
+        // TODO add your handling code here:
+        ConsultaCliente ConsultaCliente = new ConsultaCliente();
+        ConsultaCliente.setVisible(true);
+        jDesktop.add(ConsultaCliente);
+    }//GEN-LAST:event_jMenuItemConsultaClienteActionPerformed
+
+    private void jMenuItemConsultaGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaGerenteActionPerformed
+        // TODO add your handling code here:
+        ConsultaGerente ConsultaGerente = new ConsultaGerente();
+        ConsultaGerente.setVisible(true);
+        jDesktop.add(ConsultaGerente);
+    }//GEN-LAST:event_jMenuItemConsultaGerenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,13 +242,13 @@ public class TelaInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItemCadChamado;
     private javax.swing.JMenuItem jMenuItemCadCliente;
+    private javax.swing.JMenuItem jMenuItemConsultaChamado;
+    private javax.swing.JMenuItem jMenuItemConsultaCliente;
+    private javax.swing.JMenuItem jMenuItemConsultaFuncionario;
+    private javax.swing.JMenuItem jMenuItemConsultaGerente;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     // End of variables declaration//GEN-END:variables
